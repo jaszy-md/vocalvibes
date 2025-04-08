@@ -1,0 +1,17 @@
+# node_modules mappen uitsluiten (deze worden automatisch gegenereerd)
+node_modules/
+
+# Buildbestanden die je niet wilt versioneren
+style.css
+style.css.map
+style-rtl.css
+woocommerce.css
+
+# Mac/Windows systeemfiles uitsluiten
+.DS_Store
+Thumbs.db
+
+# Log- of tijdelijke bestanden
+*.log
+*.tmp
+*.zip
