@@ -18,7 +18,6 @@
 
 	<!-- Material Icons -->
 	<link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
-	<!-- Font Awesome (optioneel, als je ooit fa- iconen gebruikt) -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 	<?php wp_head(); ?>
@@ -33,7 +32,7 @@
 			<div class="header__topbar">
 				<div class="header__topbar-left"></div>
 
-				<div class="header__promo">Boek nu je eerste GRATIS proefles</div>
+				<div class="header__promo">Boek nu je eerste GRATIS proefles!</div>
 
 				<div class="header__topbar-icons">
 					<a href="mailto:info@vocalvibes.nl" title="Mail ons">

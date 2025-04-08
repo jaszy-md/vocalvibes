@@ -13,7 +13,7 @@
 		height: 36px;
 		padding: 0 1rem;
 
-		// Promo-tekst blijft altijd gecentreerd
+		// Promo-text
 		&-text {
 			color: #ffffff;
 			font-weight: 400;
@@ -22,7 +22,7 @@
 			z-index: 1;
 		}
 
-		// Iconen rechts
+		// Icons
 		&-icons {
 			position: absolute;
 			right: 1rem;
@@ -42,7 +42,7 @@
 				}
 
 				&:hover {
-					color: #fff; // blijft wit
+					color: #fff;
 				}
 			}
 		}
