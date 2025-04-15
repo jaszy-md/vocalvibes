@@ -12,6 +12,10 @@ if (!defined('_S_VERSION')) {
 	define('_S_VERSION', '1.0.0');
 }
 
+if (!is_admin()) {
+	add_filter('show_admin_bar', '__return_false');
+}
+
 function vocalvibes_setup()
 {
 	load_theme_textdomain('vocalvibes', get_template_directory() . '/languages');
@@ -36,6 +40,7 @@ function vocalvibes_setup()
 
 	register_nav_menus(array(
 		'headerMenuLocation' => __('Header Menu', 'vocalvibes'),
+		'footerMenuLocation' => __('Footer Menu', 'vocalvibes'), // ✅ Toegevoegd
 	));
 }
 add_action('after_setup_theme', 'vocalvibes_setup');
@@ -43,15 +48,21 @@ add_action('after_setup_theme', 'vocalvibes_setup');
 function vocalvibes_scripts()
 {
 	wp_enqueue_style('vocalvibes-style', get_stylesheet_uri(), array(), _S_VERSION);
+
+	// ✅ Hamburger-menu JavaScript toevoegen
+	wp_enqueue_script(
+		'vocalvibes-hamburger',
+		get_template_directory_uri() . '/js/hamburger.js',
+		array(),
+		_S_VERSION,
+		true
+	);
 }
 add_action('wp_enqueue_scripts', 'vocalvibes_scripts');
 
-// ✅ Laad de custom template tags, zoals vocalvibes_posted_on()
 require get_template_directory() . '/inc/template-tags.php';
 
 
-// ✅ Herbruikbare banner op basis van ACF
-// Aangepaste versie:
 function vocalvibes_banner($args = [])
 {
 	$banner_type = get_field('banner_type');
@@ -94,3 +105,16 @@ function vocalvibes_banner($args = [])
 	</section>
 <?php
 }
+
+function add_background_color_class_to_body($classes)
+{
+	if (is_singular(['post', 'page'])) {
+		$kleur = get_field('background_color');
+		if ($kleur) {
+			$classes[] = sanitize_html_class($kleur);
+		}
+	}
+	return $classes;
+}
+
+add_filter('body_class', 'add_background_color_class_to_body');

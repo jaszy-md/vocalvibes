@@ -1,34 +1,41 @@
-<?php
-/**
- * The template for displaying the footer
- *
- * Contains the closing of the #content div and all content after.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package VocalVibes
- */
+<footer id="colophon" class="site-footer">
+	<div class="footer-top">
+		<div class="wrapper footer-content">
+			<div class="footer-logo">
+				<?php the_custom_logo(); ?>
+			</div>
 
-?>
+			<nav class="footer-nav">
+				<?php
+				wp_nav_menu(array(
+					'theme_location' => 'footerMenuLocation',
+					'menu_class'     => 'footer-menu',
+					'container'      => false,
+				));
+				?>
+			</nav>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'vocalvibes' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'vocalvibes' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'vocalvibes' ), 'vocalvibes', '<a href="http://underscores.me/">Jaszy</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+			<div class="footer-socials-and-image">
+				<div class="footer-socials">
+					<a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+					<a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+					<a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+				</div>
+				<div class="footer-image">
+					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/footer-women.png" alt="Vrolijke vrouw" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer-bottom">
+		<p>&copy; <?php echo date('Y'); ?> JaszyDesigns. All rights reserved.</p>
+	</div>
+</footer>
+
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-
 </body>
+
 </html>

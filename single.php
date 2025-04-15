@@ -1,42 +1,38 @@
 <?php
-
-/**
- * The template for displaying all single posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package VocalVibes
- */
-
 get_header();
+
+// Toon de herbruikbare banner bovenaan
 vocalvibes_banner();
 ?>
 
-<main id="primary" class="site-main">
+<main id="primary" class="site-main single-post-layout">
+	<section class="post-section">
+		<div class="wrapper">
+			<div class="post-card">
+				<?php while (have_posts()) : the_post(); ?>
+					<?php the_post_thumbnail('large'); ?>
 
-	<?php
-	while (have_posts()) :
-		the_post();
+					<div class="post-content">
+						<?php the_content(); ?>
+					</div>
+				<?php endwhile; ?>
+			</div>
+		</div>
 
-		get_template_part('template-parts/content', get_post_type());
+		<div class="regi-section">
+			<div class="regi-inner">
+				<p>📬 Aanmelden? Makkelijk!<br>
+					Vul het contactformulier onderaan de pagina in, en we nemen telefonisch contact met je op om samen een eerste afspraak te plannen.<br>
+					We kijken ernaar uit om met jou de muziek in te duiken!<br>
+					Let’s sing it out loud! 🎶
+				</p>
+				<a href="/contact" class="btn btn-primary">Aanmelden</a>
+			</div>
+		</div>
 
-		the_post_navigation(
-			array(
-				'prev_text' => '<span class="nav-subtitle">' . esc_html__('Previous:', 'vocalvibes') . '</span> <span class="nav-title">%title</span>',
-				'next_text' => '<span class="nav-subtitle">' . esc_html__('Next:', 'vocalvibes') . '</span> <span class="nav-title">%title</span>',
-			)
-		);
+		<?php get_template_part('template-parts/youtube-section'); ?>
 
-		// If comments are open or we have at least one comment, load up the comment template.
-		if (comments_open() || get_comments_number()) :
-			comments_template();
-		endif;
+	</section>
+</main>
 
-	endwhile; // End of the loop.
-	?>
-
-</main><!-- #main -->
-
-<?php
-get_sidebar();
-get_footer();
+<?php get_footer(); ?>

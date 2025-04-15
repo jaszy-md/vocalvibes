@@ -58,6 +58,24 @@
 						));
 						?>
 					</nav>
+					<button class="hamburger-menu" id="hamburgerMenu">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
 				</div>
 			</div>
 		</header>
+
+
+		<!-- Mobiele Navigatie -->
+		<div class="mobile-nav-container" id="mobileNav">
+			<?php
+			wp_nav_menu(array(
+				'theme_location' => 'headerMenuLocation',
+				'container'      => false,
+				'menu_class'     => '',
+				'items_wrap'     => '<ul>%3$s</ul>',
+			));
+			?>
+		</div>
