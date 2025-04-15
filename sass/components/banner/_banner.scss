@@ -32,24 +32,26 @@
 	&__title-image-wrapper {
 		position: absolute;
 		left: 0;
-		top: 60%;
+		top: 55%;
 		transform: translateY(-50%);
 		z-index: 3;
 		display: flex;
 		align-items: center;
 		gap: 1rem;
+		animation: slideInLeft 1s ease-out forwards;
+		opacity: 0;
 
 		img.banner__title-image {
 			max-height: 100px;
-			width: 300px;
+			width: 150px;
 		}
 
 		.banner__title-on-image {
-			color: #01053f;
-			font-size: 25px;
+			color: #ffffff;
+			font-size: 15px;
 			margin: 0;
 			position: absolute;
-			left: 2.5rem;
+			left: 7px;
 			top: 45%;
 			transform: translateY(-50%);
 			white-space: nowrap;
@@ -61,9 +63,49 @@
 		z-index: 2;
 		padding: 5rem 2rem;
 
+		// 👇 animatie
+		animation: fadeInUp 1s ease-out 0.3s forwards;
+		opacity: 0;
+
 		.banner__subtitle {
 			font-size: 14px;
 			color: #e0d1ff;
 		}
+	}
+	
+}
+body.single-post {
+	.banner {
+	  height: 400px; // of een andere hoogte naar wens
+	}
+  }
+  
+@media screen and (max-width: 950px) {
+	body.home .banner__title-image-wrapper {
+	  top: 32%;
+	}
+	
+}
+
+// 🔁 Animaties
+@keyframes slideInLeft {
+	from {
+		transform: translateX(-100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@keyframes fadeInUp {
+	from {
+		transform: translateY(20px);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
 	}
 }

@@ -72,7 +72,7 @@ function vocalvibes_banner($args = [])
 
 	// Fallbacks
 	$fallback_banner_image = get_theme_file_uri('/assets/images/default-banner.png');
-	$fallback_titel_afbeelding = get_theme_file_uri('/assets/images/ribbon.png');
+	$fallback_titel_afbeelding = get_theme_file_uri('/assets/images/page-ribbon-black.png');
 
 	$title = isset($args['title']) ? $args['title'] : get_the_title();
 	$subtitle = isset($args['subtitle']) ? $args['subtitle'] : get_field('banner_subtitle');
@@ -105,6 +105,34 @@ function vocalvibes_banner($args = [])
 	</section>
 <?php
 }
+
+function get_radio_box_html_by_slug($slug, $radio_image_path, $alt_text)
+{
+	$post = get_posts(array(
+		'name' => $slug,
+		'post_type' => 'post',
+		'posts_per_page' => 1
+	));
+
+	if ($post) {
+		$post_id = $post[0]->ID;
+		$permalink = get_permalink($post_id);
+		$banner_afbeelding = get_field('banner_afbeelding', $post_id);
+
+		$output = '<a href="' . esc_url($permalink) . '" class="radio-box">';
+		if ($banner_afbeelding) {
+			$output .= '<div class="img-container">
+                            <img src="' . esc_url($banner_afbeelding['url']) . '" alt="' . esc_attr($banner_afbeelding['alt']) . '" />
+                        </div>';
+		}
+		$output .= '<img src="' . esc_url(get_theme_file_uri($radio_image_path)) . '" alt="' . esc_attr($alt_text) . '" />';
+		$output .= '</a>';
+		return $output;
+	}
+
+	return '';
+}
+
 
 function add_background_color_class_to_body($classes)
 {

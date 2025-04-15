@@ -1,6 +1,6 @@
 .homepage {
   .radio-section {
-    padding: 3rem 1rem;
+    padding: 5rem 1rem;
     position: relative;
     text-align: center;
 
@@ -225,6 +225,39 @@
       }
     }
   }
+  .intro-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: -200px; // trekt alles omhoog
+    z-index: 10;
+    margin-bottom: 100px;
+  
+    .intro-message {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      max-width: 510px;
+      color: white;
+      text-align: left;
+      border: 2px solid #b993f7;
+      z-index: 10;
+  
+      p {
+        margin: 0;
+        font-size: 14px;
+        color: #ffffff;
+        line-height: 1.6;
+  
+        .highlight {
+          color: #b993f7;
+          font-weight: bold;
+        }
+      }
+    }
+  }
 }
 
 /* Tablet */
@@ -328,9 +361,50 @@
 }
 
 /* Mobiel */
-/* Mobiel */
 @media (min-width: 350px) and (max-width: 650px) {
-  .homepage {
+
+    .homepage {
+      
+      .intro-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-top: -160px; // trekt alles omhoog
+        z-index: 10;
+        margin-bottom: 0px;
+    
+      
+        .intro-message {
+          background: rgba(0, 0, 0, 0.75);
+          padding: 1rem 2rem;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+          max-width: 290px;
+          color: white;
+          text-align: left;
+          border: 2px solid #b993f7;
+          z-index: 10;   
+      
+          p {
+            margin: 0;
+            font-size: 14px;
+            color: #ffffff;
+            line-height: 1.6;
+      
+            .highlight {
+              color: #b993f7;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+     .radio-section .music-note {
+        position: absolute;
+        width: 50px;
+        top: 40px;
+    }
+
     .full-width-image-section {
       .background-img {
         height: 400px;
@@ -402,7 +476,6 @@
             .scroll-container {
               width: 100%;
               height: calc(100% - 10px);
-              
               overflow-y: auto;
 
               p {
@@ -429,3 +502,4 @@
     }
   }
 }
+

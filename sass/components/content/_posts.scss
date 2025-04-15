@@ -11,10 +11,11 @@
 		border-radius: 12px;
 		padding: 2rem;
 		width: 800px;
-		margin-top: -170px;
+		margin-top: -210px;
 		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 		position: relative;
 		z-index: 3;
+		border: 2px solid #b993f7;;
 	}
 
 	.post-title {
@@ -74,7 +75,8 @@
 	.single-post-layout {
 		.post-card {
 			width: 90%;
-			margin: -120px auto 0;
+			
+			
 		}
 
 		.post-title {
