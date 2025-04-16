@@ -161,3 +161,27 @@ function add_background_color_class_to_body($classes)
 }
 
 add_filter('body_class', 'add_background_color_class_to_body');
+
+
+// form
+
+add_action('admin_post_nopriv_vocalvibes_contact_form', 'handle_vocalvibes_contact_form');
+add_action('admin_post_vocalvibes_contact_form', 'handle_vocalvibes_contact_form');
+
+function handle_vocalvibes_contact_form()
+{
+	if (
+		!isset($_POST['vocalvibes_contact_nonce_field']) ||
+		!wp_verify_nonce($_POST['vocalvibes_contact_nonce_field'], 'vocalvibes_contact_nonce_action')
+	) {
+		wp_die('Ongeldige aanvraag.');
+	}
+
+	$naam = sanitize_text_field($_POST['naam']);
+	$email = sanitize_email($_POST['email']);
+	$bericht = sanitize_textarea_field($_POST['bericht']);
+
+
+	wp_redirect(home_url('/bedankt'));
+	exit;
+}

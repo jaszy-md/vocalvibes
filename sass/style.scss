@@ -118,7 +118,10 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	}
   }
   
-
+  html, body {
+	overflow-x: hidden;
+  }
+  
   main{
 	margin: 0;
 	padding: 0;
