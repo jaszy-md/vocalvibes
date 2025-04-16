@@ -19,12 +19,27 @@
     }
 
     .radio-wrapper {
-      display: flex;
+      display: flex; // ← Zet deze hier!
       justify-content: center;
       align-items: flex-start;
       gap: 2rem;
       flex-wrap: wrap;
+    
+      opacity: 0;
+      transform: translateY(50px);
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      margin-top: -60px;
 
+      &.animate {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+        pointer-events: auto;
+        animation: bounceInDown 2s ease-out forwards;
+      }
+    
       .radio-box {
         background: transparent;
         max-width: 300px;
@@ -503,3 +518,26 @@
   }
 }
 
+
+@keyframes bounceInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(40px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+  75% {
+    transform: translateY(8px);
+  }
+  90% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

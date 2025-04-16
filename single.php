@@ -36,17 +36,22 @@ vocalvibes_banner();
 			];
 
 			if (array_key_exists($post_slug, $radio_data)) :
-				$radio = $radio_data[$post_slug];
 			?>
 				<section class="radio-section">
 					<div class="radio-wrapper">
-						<?php echo get_radio_box_html_by_slug($post_slug, $radio['img'], $radio['alt']); ?>
+						<?php
+						if ($post_slug === 'prive-zangles') {
+							echo get_radio_box_html_by_slug('prive-zangles', '/assets/images/purple-radio.png', 'Paarse radio');
+							echo get_radio_box_html_by_slug('prive-zangles', '/assets/images/pink-radio.png', 'Roze radio');
+						} else {
+							$radio = $radio_data[$post_slug];
+							echo get_radio_box_html_by_slug($post_slug, $radio['img'], $radio['alt']);
+						}
+						?>
 					</div>
 				</section>
 			<?php endif; ?>
-
 		</div>
-
 
 		<div class="regi-section">
 			<div class="regi-inner">
@@ -60,7 +65,6 @@ vocalvibes_banner();
 		</div>
 
 		<?php get_template_part('template-parts/youtube-section'); ?>
-
 	</section>
 </main>
 
