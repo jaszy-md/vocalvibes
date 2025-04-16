@@ -65,6 +65,13 @@ function vocalvibes_scripts()
 		_S_VERSION,
 		true
 	);
+	wp_enqueue_script(
+		'vocalvibes-blog-board',
+		get_template_directory_uri() . '/js/blog-board.js',
+		array(),
+		_S_VERSION,
+		true
+	);
 }
 add_action('wp_enqueue_scripts', 'vocalvibes_scripts');
 

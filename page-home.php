@@ -73,14 +73,18 @@ if ($weekly_blog) {
                     <?php endif; ?>
                 </div>
 
-
                 <div class="bottom-half">
                     <?php if (!empty($exercise)) : ?>
-                        <div class="scroll-container">
+                        <div class="exercise-overlay" id="exercise-overlay">
+                            <span class="overlay-text">Tap hier voor de wekelijkse oefening!</span>
+                        </div>
+                        <div class="scroll-container hidden" id="exercise-content">
                             <p><?php echo nl2br(esc_html($exercise)); ?></p>
                         </div>
                     <?php endif; ?>
                 </div>
+
+
             </div>
         </div>
     </section>
