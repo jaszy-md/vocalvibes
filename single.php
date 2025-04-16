@@ -42,15 +42,19 @@ vocalvibes_banner();
 						<?php
 						if ($post_slug === 'prive-zangles') {
 							echo get_radio_box_html_by_slug('prive-zangles', '/assets/images/purple-radio.png', 'Paarse radio');
-							echo get_radio_box_html_by_slug('prive-zangles', '/assets/images/pink-radio.png', 'Roze radio');
+							echo get_radio_box_html_by_slug('onlineles', '/assets/images/pink-radio.png', 'Roze radio');
 						} else {
 							$radio = $radio_data[$post_slug];
 							echo get_radio_box_html_by_slug($post_slug, $radio['img'], $radio['alt']);
+
+							// Voeg lege placeholder toe om layout te behouden
+							echo '<div class="radio-placeholder"></div>';
 						}
 						?>
 					</div>
 				</section>
 			<?php endif; ?>
+
 		</div>
 
 		<div class="regi-section">
