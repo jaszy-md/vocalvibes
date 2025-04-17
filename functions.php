@@ -40,7 +40,7 @@ function vocalvibes_setup()
 
 	register_nav_menus(array(
 		'headerMenuLocation' => __('Header Menu', 'vocalvibes'),
-		'footerMenuLocation' => __('Footer Menu', 'vocalvibes'), // ✅ Toegevoegd
+		'footerMenuLocation' => __('Footer Menu', 'vocalvibes'),
 	));
 }
 add_action('after_setup_theme', 'vocalvibes_setup');
@@ -49,35 +49,34 @@ function vocalvibes_scripts()
 {
 	wp_enqueue_style('vocalvibes-style', get_stylesheet_uri(), array(), _S_VERSION);
 
-	// ✅ Hamburger-menu JavaScript toevoegen
-	wp_enqueue_script(
-		'vocalvibes-hamburger',
-		get_template_directory_uri() . '/js/hamburger.js',
-		array(),
-		_S_VERSION,
-		true
-	);
-
-	wp_enqueue_script(
-		'vocalvibes-radio',
-		get_template_directory_uri() . '/js/radio.js',
-		array(),
-		_S_VERSION,
-		true
-	);
-	wp_enqueue_script(
-		'vocalvibes-blog-board',
-		get_template_directory_uri() . '/js/blog-board.js',
-		array(),
-		_S_VERSION,
-		true
-	);
+	wp_enqueue_script('vocalvibes-hamburger', get_template_directory_uri() . '/js/hamburger.js', array(), _S_VERSION, true);
+	wp_enqueue_script('vocalvibes-radio', get_template_directory_uri() . '/js/radio.js', array(), _S_VERSION, true);
+	wp_enqueue_script('vocalvibes-blog-board', get_template_directory_uri() . '/js/blog-board.js', array(), _S_VERSION, true);
 }
 add_action('wp_enqueue_scripts', 'vocalvibes_scripts');
 
 require get_template_directory() . '/inc/template-tags.php';
 
+/**
+ * Custom logo met fallback
+ */
+function vocalvibes_custom_logo()
+{
+	$custom_logo_id = get_theme_mod('custom_logo');
+	if ($custom_logo_id) {
+		echo wp_get_attachment_image($custom_logo_id, 'full', false, array('class' => 'custom-logo'));
+	} else {
+		// Fallback
+		echo '<a href="' . esc_url(home_url('/')) . '" class="custom-logo-link" rel="home">';
+		echo '<img src="' . esc_url(get_template_directory_uri() . '/assets/images/logo.png') . '" class="custom-logo" alt="VocalVibes Logo" style="height:48px;width:auto;margin:3px 0 0 25px;">';
+		echo '</a>';
+	}
+}
 
+
+/**
+ * Banner met fallbacks
+ */
 function vocalvibes_banner($args = [])
 {
 	$banner_type = get_field('banner_type');
@@ -85,16 +84,20 @@ function vocalvibes_banner($args = [])
 	$banner_video = get_field('banner_video_url');
 	$titel_afbeelding = get_field('titel_afbeelding');
 
-	// Fallbacks
 	$fallback_banner_image = get_theme_file_uri('/assets/images/default-banner.png');
+	$fallback_banner_video = get_theme_file_uri('/assets/videos/video-girl.mp4');
 	$fallback_titel_afbeelding = get_theme_file_uri('/assets/images/page-ribbon-black.png');
 
 	$title = isset($args['title']) ? $args['title'] : get_the_title();
 	$subtitle = isset($args['subtitle']) ? $args['subtitle'] : get_field('banner_subtitle');
 
-	// Altijd een afbeelding instellen (fallback als niets is gekozen)
 	if ($banner_type === 'video' && $banner_video) {
-		$media = '<video autoplay muted loop playsinline class="banner__video"><source src="' . esc_url($banner_video) . '" type="video/mp4"></video>';
+		$video_url = esc_url($banner_video);
+	} elseif ($banner_type === 'video') {
+		$video_url = $fallback_banner_video;
+	}
+	if (!empty($video_url)) {
+		$media = '<video autoplay muted loop playsinline class="banner__video"><source src="' . esc_url($video_url) . '" type="video/mp4"></video>';
 	} elseif ($banner_type === 'image' && $banner_afbeelding) {
 		$image_url = esc_url($banner_afbeelding['url']);
 		$media = '<div class="banner__image" style="background-image: url(' . $image_url . ');"></div>';
@@ -121,6 +124,9 @@ function vocalvibes_banner($args = [])
 <?php
 }
 
+/**
+ * Radio box op basis van slug
+ */
 function get_radio_box_html_by_slug($slug, $radio_image_path, $alt_text)
 {
 	$post = get_posts(array(
@@ -135,7 +141,7 @@ function get_radio_box_html_by_slug($slug, $radio_image_path, $alt_text)
 		$banner_afbeelding = get_field('banner_afbeelding', $post_id);
 
 		$output = '<a href="' . esc_url($permalink) . '" class="radio-box">';
-		if ($banner_afbeelding) {
+		if ($banner_afbeelding && isset($banner_afbeelding['url'])) {
 			$output .= '<div class="img-container">
                             <img src="' . esc_url($banner_afbeelding['url']) . '" alt="' . esc_attr($banner_afbeelding['alt']) . '" />
                         </div>';
@@ -148,7 +154,9 @@ function get_radio_box_html_by_slug($slug, $radio_image_path, $alt_text)
 	return '';
 }
 
-
+/**
+ * Background kleur op body class
+ */
 function add_background_color_class_to_body($classes)
 {
 	if (is_singular(['post', 'page'])) {
@@ -159,12 +167,11 @@ function add_background_color_class_to_body($classes)
 	}
 	return $classes;
 }
-
 add_filter('body_class', 'add_background_color_class_to_body');
 
-
-// form
-
+/**
+ * Contactformulier verwerken
+ */
 add_action('admin_post_nopriv_vocalvibes_contact_form', 'handle_vocalvibes_contact_form');
 add_action('admin_post_vocalvibes_contact_form', 'handle_vocalvibes_contact_form');
 
@@ -180,7 +187,6 @@ function handle_vocalvibes_contact_form()
 	$naam = sanitize_text_field($_POST['naam']);
 	$email = sanitize_email($_POST['email']);
 	$bericht = sanitize_textarea_field($_POST['bericht']);
-
 
 	wp_redirect(home_url('/bedankt'));
 	exit;

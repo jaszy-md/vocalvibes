@@ -47,7 +47,7 @@
 			<div class="wrapper">
 				<div class="header__inner">
 					<div class="header__logo">
-						<?php the_custom_logo(); ?>
+						<?php vocalvibes_custom_logo(); ?>
 					</div>
 					<nav class="header__nav">
 						<?php

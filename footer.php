@@ -2,7 +2,7 @@
 	<div class="footer-top">
 		<div class="wrapper footer-content">
 			<div class="footer-logo">
-				<?php the_custom_logo(); ?>
+				<?php vocalvibes_custom_logo(); ?>
 			</div>
 
 			<nav class="footer-nav">

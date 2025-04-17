@@ -247,12 +247,13 @@
 			transform: translateY(0);
 		}
 	}
-	.header__logo img {
+	.header__logo .custom-logo {
 		height: 48px !important;
-		width: auto!important;
-		margin: 0 0px 0 25px !important;
-
+		width: auto !important;
+		margin: 3px 0 0 25px !important;
 	}
+	
+	
 
 	@media (max-width: 650px) {
 		.header__topbar {
