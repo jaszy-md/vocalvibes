@@ -76,9 +76,14 @@
 }
 body.single-post {
 	.banner {
-	  height: 400px; // of een andere hoogte naar wens
+	  height: 400px;
 	}
   }
+
+body.page-template-page-contact .banner {
+	height: 400px !important;
+}
+
   
 @media screen and (max-width: 950px) {
 	body.home .banner__title-image-wrapper {

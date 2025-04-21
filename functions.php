@@ -57,26 +57,19 @@ add_action('wp_enqueue_scripts', 'vocalvibes_scripts');
 
 require get_template_directory() . '/inc/template-tags.php';
 
-/**
- * Custom logo met fallback
- */
+
 function vocalvibes_custom_logo()
 {
 	$custom_logo_id = get_theme_mod('custom_logo');
 	if ($custom_logo_id) {
 		echo wp_get_attachment_image($custom_logo_id, 'full', false, array('class' => 'custom-logo'));
 	} else {
-		// Fallback
 		echo '<a href="' . esc_url(home_url('/')) . '" class="custom-logo-link" rel="home">';
 		echo '<img src="' . esc_url(get_template_directory_uri() . '/assets/images/logo.png') . '" class="custom-logo" alt="VocalVibes Logo" style="height:48px;width:auto;margin:3px 0 0 25px;">';
 		echo '</a>';
 	}
 }
 
-
-/**
- * Banner met fallbacks
- */
 function vocalvibes_banner($args = [])
 {
 	$banner_type = get_field('banner_type');
@@ -124,9 +117,8 @@ function vocalvibes_banner($args = [])
 <?php
 }
 
-/**
- * Radio box op basis van slug
- */
+// Radio box op basis van slug
+
 function get_radio_box_html_by_slug($slug, $radio_image_path, $alt_text)
 {
 	$post = get_posts(array(
@@ -154,9 +146,7 @@ function get_radio_box_html_by_slug($slug, $radio_image_path, $alt_text)
 	return '';
 }
 
-/**
- * Background kleur op body class
- */
+// Background kleur op body class
 function add_background_color_class_to_body($classes)
 {
 	if (is_singular(['post', 'page'])) {
@@ -169,9 +159,8 @@ function add_background_color_class_to_body($classes)
 }
 add_filter('body_class', 'add_background_color_class_to_body');
 
-/**
- * Contactformulier verwerken
- */
+
+// Contactformulier verwerken
 add_action('admin_post_nopriv_vocalvibes_contact_form', 'handle_vocalvibes_contact_form');
 add_action('admin_post_vocalvibes_contact_form', 'handle_vocalvibes_contact_form');
 
