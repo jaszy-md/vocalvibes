@@ -32,8 +32,7 @@
 		<p>&copy; <?php echo date('Y'); ?> JaszyDesigns. All rights reserved.</p>
 	</div>
 </footer>
-
-</div><!-- #page -->
+</div>
 
 <?php wp_footer(); ?>
 </body>

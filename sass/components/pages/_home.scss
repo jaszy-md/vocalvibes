@@ -19,7 +19,7 @@
     }
 
     .radio-wrapper {
-      display: flex; // ← Zet deze hier!
+      display: flex;
       justify-content: center;
       align-items: flex-start;
       gap: 2rem;
@@ -312,7 +312,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: -200px; // trekt alles omhoog
+    margin-top: -200px;
     z-index: 10;
     margin-bottom: 100px;
   
@@ -342,7 +342,7 @@
   }
 }
 
-/* Tablet */
+// Tablet
 @media (max-width: 950px) {
   .homepage {
     .full-width-image-section {
@@ -442,7 +442,7 @@
   }
 }
 
-/* Mobiel */
+// Mobile
 @media (min-width: 350px) and (max-width: 650px) {
 
     .homepage {
@@ -452,7 +452,7 @@
         justify-content: center;
         align-items: center;
         width: 100%;
-        margin-top: -160px; // trekt alles omhoog
+        margin-top: -160px;
         z-index: 10;
         margin-bottom: 0px;
     
@@ -550,7 +550,6 @@
             left: 0;
             width: 100%;
             height: 43%;
-            background: linear-gradient(to bottom, #FF9AEE 0%, #FFFDFF 100%);
             z-index: 1;
             padding: 13px 10px 3px 8px;
             box-sizing: border-box;

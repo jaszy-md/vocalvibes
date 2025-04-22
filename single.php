@@ -1,7 +1,5 @@
 <?php
 get_header();
-
-// Toon de herbruikbare banner bovenaan
 vocalvibes_banner();
 ?>
 
@@ -33,6 +31,10 @@ vocalvibes_banner();
 					'img' => '/assets/images/pink-radio.png',
 					'alt' => 'Roze radio',
 				],
+				'over-mij' => [
+					'img' => '/assets/images/over-mij.png',
+					'alt' => 'Over mij',
+				],
 			];
 
 			if (array_key_exists($post_slug, $radio_data)) :
@@ -47,7 +49,6 @@ vocalvibes_banner();
 							$radio = $radio_data[$post_slug];
 							echo get_radio_box_html_by_slug($post_slug, $radio['img'], $radio['alt']);
 
-							// Voeg lege placeholder toe om layout te behouden
 							echo '<div class="radio-placeholder"></div>';
 						}
 						?>

@@ -55,7 +55,7 @@ body.single-post .youtube-section {
     margin-bottom: -96px;
 }
 
-
+// Tablet
 @media (max-width: 950px) {
 	.youtube-section {
 		.youtube-inner {
@@ -75,7 +75,7 @@ body.single-post .youtube-section {
 	}
 }
 
-/* Mobiel (350px–650px) */
+// Mobile
 @media (min-width: 350px) and (max-width: 650px) {
 	.youtube-section {
 		padding: 20px;

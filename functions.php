@@ -117,8 +117,7 @@ function vocalvibes_banner($args = [])
 <?php
 }
 
-// Radio box op basis van slug
-
+// Radio
 function get_radio_box_html_by_slug($slug, $radio_image_path, $alt_text)
 {
 	$post = get_posts(array(
@@ -146,7 +145,7 @@ function get_radio_box_html_by_slug($slug, $radio_image_path, $alt_text)
 	return '';
 }
 
-// Background kleur op body class
+// Background color
 function add_background_color_class_to_body($classes)
 {
 	if (is_singular(['post', 'page'])) {
@@ -160,7 +159,7 @@ function add_background_color_class_to_body($classes)
 add_filter('body_class', 'add_background_color_class_to_body');
 
 
-// Contactformulier verwerken
+// Contactform
 add_action('admin_post_nopriv_vocalvibes_contact_form', 'handle_vocalvibes_contact_form');
 add_action('admin_post_vocalvibes_contact_form', 'handle_vocalvibes_contact_form');
 

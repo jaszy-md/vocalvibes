@@ -138,3 +138,23 @@ body.lichtblauw {
 body.lichtgeel {
 	background-color: #fff9d6;
 }
+
+.btn-purple {
+	background-color: #b84acb;
+	color: white;
+	border: none;
+	padding: 0.6rem 1rem;
+	border-radius: 8px;
+	font-size: 13px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	text-decoration: none;
+	display: inline-block;
+	text-align: center;
+	margin-bottom: 20px;
+  }
+  
+  .btn-purple:hover {
+	background-color: #a038b2;
+  }
+  

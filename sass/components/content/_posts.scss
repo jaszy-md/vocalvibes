@@ -110,8 +110,6 @@
 	}
 }
 
-
-/* Radio module styling – herbruikbaar */
 .radio-module {
 	.radio-section {
 		text-align: center;
@@ -176,8 +174,7 @@
 	}
 }
 
-
-/* Tablet */
+// Tablet
 @media (max-width: 950px) {
 	.single-post-layout {
 		.post-section .wrapper {
@@ -226,9 +223,12 @@
 	}
 }
 
+// Mobile
 
-/* Mobiel */
-@media (max-width: 650px) {
+@media (max-width: 700px) {
+	.radio-placeholder{
+		display: none;
+	}
 	.radio-module {
 		.radio-section {
 			padding: 1rem;
@@ -236,16 +236,24 @@
 			.radio-wrapper {
 				flex-direction: column;
 				align-items: center;
+				margin-top: 0;
 
 				.radio-box {
-					max-width: 100%;
+					max-width: 280px;
+					transform: scale(1);
+					margin-bottom: 2rem;
+					position: relative;
 
 					.img-container {
-						width: 120px;
-						height: 100px;
-						left: 28%;
+						width: 110px;
+						height: 92px;
+						left: 26%;
 						top: 50%;
 						transform: translate(-50%, -50%);
+					}
+
+					p {
+						font-size: 14px;
 					}
 				}
 			}
