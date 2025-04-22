@@ -88,7 +88,7 @@ if ($weekly_blog) {
             </div>
         </div>
     </section>
-
+    <?php get_template_part('template-parts/signup-section'); ?>
     <?php get_template_part('template-parts/youtube-section'); ?>
 </main>
 
